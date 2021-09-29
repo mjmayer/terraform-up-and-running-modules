@@ -39,3 +39,8 @@ variable "enable_autoscaling" {
   description = "Enable autoscaling on the ASG"
   default     = false
 }
+
+variable "enable_new_user_data" {
+  description = "If set to true, use the new User Data Script"
+  type = bool
+}
