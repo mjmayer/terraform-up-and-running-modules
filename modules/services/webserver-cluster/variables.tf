@@ -34,3 +34,8 @@ variable "custom_tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "enable_autoscaling" {
+  description = "Enable autoscaling on the ASG"
+  default     = false
+}
