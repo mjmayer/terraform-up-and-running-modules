@@ -48,6 +48,10 @@ resource "aws_launch_configuration" "example" {
 }
 
 resource "aws_autoscaling_group" "example" {
+  # explicity depend on the launch configurations name so each time
+  # it is replaced, the ASG is also reaplaced
+  name = "${var.cluster_name}-${aws_launch_configuration.example.name}"
+
   launch_configuration = aws_launch_configuration.example.name
   vpc_zone_identifier  = data.aws_subnet_ids.default.ids
 
@@ -56,6 +60,16 @@ resource "aws_autoscaling_group" "example" {
 
   min_size = var.min_size
   max_size = var.max_size
+
+  # wait until this many instances have passed health checks
+  # before considering the ASG deployment complete
+  min_elb_capacity = var.min_size
+
+  # When replacing the ASG, create the replacement first, and destroy
+  # the original after
+  lifecycle {
+    create_before_destroy = true
+  }
 
   tag {
     key                 = "Name"
