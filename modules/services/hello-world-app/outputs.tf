@@ -1,5 +1,5 @@
 output "alb_security_group_id" {
-  value       = module.alb.dns_name
+  value       = module.alb.alb_security_group_id
   description = "The ID of the Security Group attached to the load balancer"
 }
 output "alb_dns_name" {
