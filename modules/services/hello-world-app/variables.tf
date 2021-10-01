@@ -51,6 +51,5 @@ variable "custom_tags" {
 
 variable "db_name" {
   description = "Name of the mysql database for the hello-world app"
-  default     = "hello-world"
-
+  default     = "hello_world"
 }
