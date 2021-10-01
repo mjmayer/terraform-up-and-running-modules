@@ -50,3 +50,9 @@ variable "server_text" {
   description = "Text to output on the webserver index.html"
   default     = "Hello, World!"
 }
+
+variable "custom_tags" {
+  description = "Custom tags to set on the instances in the ASG"
+  type        = map(string)
+  default     = {}
+}
