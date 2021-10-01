@@ -72,7 +72,7 @@ resource "aws_lb_listener_rule" "asg" {
 module "asg" {
   source = "../../cluster/asg-rolling-deploy"
 
-  cluster_name  = var.cluster_name
+  cluster_name  = "${var.cluster_name}-${var.environmet}"
   ami           = var.ami
   user_data     = data.template_file.user_data.rendered
   instance_type = var.instance_type

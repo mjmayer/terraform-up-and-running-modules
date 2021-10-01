@@ -23,7 +23,7 @@ variable "ami" {
 
 variable "cluster_name" {
   description = "name of the autoscaling group cluster name"
-  default     = "hello-world-${var.environment}"
+  default     = "hello-world"
 }
 
 variable "user_data" {
