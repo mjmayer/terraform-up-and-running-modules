@@ -87,6 +87,7 @@ resource "aws_security_group_rule" "allow_server_port_inbound" {
   from_port         = var.server_port
   to_port           = var.server_port
   protocol          = local.tcp_protocol
+  cidr_blocks       = local.all_ips
 }
 
 resource "aws_cloudwatch_metric_alarm" "high_cpu_utilization" {
