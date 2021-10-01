@@ -29,8 +29,8 @@ data "template_file" "user_data" {
 
   vars = {
     server_port = var.server_port
-    db_address  = data.terraform_remote_state.db.outputs.address
-    db_port     = data.terraform_remote_state.db.outputs.port
+    db_address  = module.mysql.address
+    db_port     = moduel.mysql.port
     server_text = var.server_text
   }
 
@@ -93,4 +93,10 @@ module "alb" {
 
   alb_name   = "hello-world-${var.environment}"
   subnet_ids = data.aws_subnet_ids.default.ids
+}
+
+module "mysql" {
+  source = "../../data-stores/msql"
+
+  db_name = var.db_name
 }
