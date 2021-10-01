@@ -96,7 +96,7 @@ module "alb" {
 }
 
 module "mysql" {
-  source = "../../data-stores/msql"
+  source = "../../data-stores/mysql"
 
   db_name = var.db_name
 }
