@@ -78,7 +78,7 @@ resource "aws_autoscaling_schedule" "scale_in_at_night" {
 
 }
 resource "aws_security_group" "instance" {
-  name = var.cluster_name
+  name = "sg.${var.cluster_name}-app"
 }
 
 resource "aws_security_group_rule" "allow_server_port_inbound" {
