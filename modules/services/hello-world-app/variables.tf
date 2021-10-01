@@ -26,10 +26,6 @@ variable "cluster_name" {
   default     = "hello-world"
 }
 
-variable "user_data" {
-  description = "File ran on startup of app"
-}
-
 variable "instance_type" {
   description = "Instance type"
   default     = "t3.nano"
