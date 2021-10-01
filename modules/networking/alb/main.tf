@@ -34,7 +34,7 @@ resource "aws_security_group_rule" "allow_http_inbound" {
   security_group_id = aws_security_group.alb.id
   from_port         = var.http_port
   to_port           = var.http_port
-  protocol          = local.any_protocol
+  protocol          = "tcp"
   cidr_blocks       = local.all_ips
 }
 
@@ -43,6 +43,6 @@ resource "aws_security_group_rule" "allow_http_outbound" {
   security_group_id = aws_security_group.alb.id
   from_port         = var.http_port
   to_port           = var.http_port
-  protocol          = local.any_protocol
+  protocol          = "tcp"
   cidr_blocks       = local.all_ips
 }
