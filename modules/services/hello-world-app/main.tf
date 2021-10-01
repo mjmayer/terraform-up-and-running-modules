@@ -14,23 +14,13 @@ data "aws_subnet_ids" "default" {
   vpc_id = data.aws_vpc.default.id
 }
 
-data "terraform_remote_state" "db" {
-  backend = "s3"
-
-  config = {
-    bucket = var.db_remote_state_bucket
-    key    = var.db_remote_state_key
-    region = "us-west-2"
-  }
-}
-
 data "template_file" "user_data" {
   template = file("${path.module}/user-data.sh")
 
   vars = {
     server_port = var.server_port
     db_address  = module.mysql.address
-    db_port     = moduel.mysql.port
+    db_port     = module.mysql.port
     server_text = var.server_text
   }
 
