@@ -90,15 +90,6 @@ resource "aws_security_group_rule" "allow_server_port_inbound" {
   cidr_blocks       = local.all_ips
 }
 
-resource "aws_security_group_rule" "allow_server_port_outbound" {
-  type              = "egress"
-  security_group_id = aws_security_group.instance.id
-  from_port         = var.server_port
-  to_port           = var.server_port
-  protocol          = local.tcp_protocol
-  cidr_blocks       = local.all_ips
-}
-
 resource "aws_cloudwatch_metric_alarm" "high_cpu_utilization" {
   alarm_name  = "${var.cluster_name}-high-cpu-utlization"
   namespace   = "AWS/EC2"
