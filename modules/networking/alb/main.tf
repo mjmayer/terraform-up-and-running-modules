@@ -26,7 +26,7 @@ resource "aws_lb_listener" "http" {
 }
 
 resource "aws_security_group" "alb" {
-  name = "sg.alb-${var.alb_name}"
+  name = "sg.${var.alb_name}-alb"
 }
 
 resource "aws_security_group_rule" "allow_http_inbound" {
