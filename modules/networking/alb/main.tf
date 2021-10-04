@@ -1,6 +1,6 @@
 locals {
   any_protocol = "-1"
-  any_port     = 0
+  any_port     = "-1"
   all_ips      = ["0.0.0.0/0"]
 }
 resource "aws_lb" "example" {
@@ -47,6 +47,6 @@ resource "aws_security_group_rule" "allow_http_outbound" {
   security_group_id = aws_security_group.alb.id
   from_port         = local.any_port
   to_port           = local.any_port
-  protocol          = "tcp"
+  protocol          = local.any_protocol
   cidr_blocks       = local.all_ips
 }
