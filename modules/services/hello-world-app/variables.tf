@@ -53,3 +53,24 @@ variable "db_name" {
   description = "Name of the mysql database for the hello-world app"
   default     = "hello_world"
 }
+
+variable "vpc_id" {
+  description = "The ID of the VPC to deploy into"
+  type = string
+  default = null
+}
+
+variable "subnet_ids" {
+  description = "The IDs of the subnets to deploy into"
+  type = list(string)
+  default = null
+}
+
+variable "mysql_config" {
+  description = "The config for the MySQL Db"
+  type = object({
+    address = string
+    port = number
+  })
+  default = null
+}
